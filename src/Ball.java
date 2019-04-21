@@ -22,6 +22,7 @@ public class Ball implements Runnable {
 
         //Set ball moving randomly
         Random r = new Random();
+
         int rXDir = r.nextInt(1);
         if (rXDir == 0)
             rXDir--;
@@ -53,6 +54,15 @@ public class Ball implements Runnable {
             setXDirection(+1);
         if(ball.intersects(p2.paddle))
             setXDirection(-1);
+        if(ball.intersects(scoreboard.scoreboard) && ball.y >= 65){
+            setYDirection(+1);
+        }
+        if(ball.intersects(scoreboard.scoreboard) && ball.y < 65  && ball.x < 250){
+            setXDirection(-1);
+        }
+        if(ball.intersects(scoreboard.scoreboard) && ball.y < 65  && ball.x > 250){
+            setXDirection(1);
+        }
     }
     public void move() {
         collision();

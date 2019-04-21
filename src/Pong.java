@@ -15,7 +15,7 @@ public class Pong extends JFrame {
     Graphics dbGraphics;
 
     //ball object
-    static Ball b = new Ball(250, 300);
+    static Ball b = new Ball(250, 200);
 
 
     //constructor for window
