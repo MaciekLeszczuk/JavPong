@@ -35,7 +35,12 @@ public class Paddle implements Runnable{
     public int getYDirection(){
         return yDirection;
     }
-
+    public boolean isFinished(){
+        if(score == 3){
+            return true;
+        }
+        return false;
+    }
     public void draw(Graphics g) {
 
         switch(id) {

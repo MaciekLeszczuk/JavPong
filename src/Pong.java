@@ -9,6 +9,7 @@ public class Pong extends JFrame {
     //screen size variables.
     int gWidth = 500;
     int gHeight = 400;
+    boolean isFinished = false;
     Dimension screenSize = new Dimension(gWidth, gHeight);
 
     Image dbImage;
@@ -20,7 +21,7 @@ public class Pong extends JFrame {
     static Thread ball = new Thread(b);
     static Thread p1 = new Thread(b.p1);
     static Thread p2 = new Thread(b.p2);
-    //static Thread scoreboard = new Thread(b.scoreboard);
+    static Thread scoreboard = new Thread(b.scoreboard);
 
 
     //constructor for window
@@ -78,15 +79,18 @@ public class Pong extends JFrame {
         ball.start();
         p2.start();
         p1.start();
+        scoreboard.start();
         try{
             p1.join();
             p2.join();
             ball.join();
+            scoreboard.join();
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
+
 
     @Override
     public void paint(Graphics g) {
@@ -97,14 +101,20 @@ public class Pong extends JFrame {
     }
 
     public void draw(Graphics g) {
-        b.scoreboard.draw(g);
-        g.setColor(Color.black);
-        g.drawString("Player Blue: " + b.p1.getScore(), 200, 50);
-        g.setColor(Color.black);
-        g.drawString("Player Red: " + b.p2.getScore(), 200, 70);
-        b.draw(g);
-        b.p1.draw(g);
-        b.p2.draw(g);
+        if(b.whoWon() == 0) {
+            b.scoreboard.draw(g);
+            g.setColor(Color.black);
+            g.drawString("Player Blue: " + b.p1.getScore(), 200, 50);
+            g.setColor(Color.black);
+            g.drawString("Player Red: " + b.p2.getScore(), 200, 70);
+            b.draw(g);
+            b.p1.draw(g);
+            b.p2.draw(g);
+        }
+        if(b.whoWon() != 0){
+            setBackground(Color.white);
+            g.drawString("GAME FINISHED, won Player " + b.whoWon(), 170, 200);
+        }
         repaint();
     }
 }

@@ -101,13 +101,22 @@ public class Ball implements Runnable {
             setYDirection(-1);
         }
     }
+    public int whoWon(){
+        if(p1.isFinished() == true){
+            return 1;
+        }
+        if(p2.isFinished() == true){
+            return 2;
+        }
+        return 0;
+    }
 
     @Override
     public void run() {
         try {
             while(true) {
                 move();
-                Thread.sleep(5);
+                Thread.sleep(1);
             }
         }
         catch(Exception e) {
