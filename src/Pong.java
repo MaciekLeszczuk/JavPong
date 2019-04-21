@@ -20,7 +20,7 @@ public class Pong extends JFrame {
     static Thread ball = new Thread(b);
     static Thread p1 = new Thread(b.p1);
     static Thread p2 = new Thread(b.p2);
-    static Thread scoreboard = new Thread(b.scoreboard);
+    //static Thread scoreboard = new Thread(b.scoreboard);
 
 
     //constructor for window
