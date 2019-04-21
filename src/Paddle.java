@@ -32,6 +32,9 @@ public class Paddle implements Runnable{
     public int getScore(){
         return score;
     }
+    public int getYDirection(){
+        return yDirection;
+    }
 
     public void draw(Graphics g) {
 

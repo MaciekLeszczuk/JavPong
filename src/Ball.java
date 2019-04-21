@@ -50,10 +50,24 @@ public class Ball implements Runnable {
     }
 
     public void collision(){
-        if(ball.intersects(p1.paddle))
+        if(ball.intersects(p1.paddle)) {
             setXDirection(+1);
-        if(ball.intersects(p2.paddle))
+            if(p1.getYDirection()==1){
+                setYDirection(1);
+            }
+            if(p1.getYDirection()==-1){
+                setYDirection(-1);
+            }
+        }
+        if(ball.intersects(p2.paddle)) {
             setXDirection(-1);
+            if(p2.getYDirection()==1){
+                setYDirection(1);
+            }
+            if(p2.getYDirection()==-1){
+                setYDirection(-1);
+            }
+        }
         if(ball.intersects(scoreboard.scoreboard) && ball.y >= 65){
             setYDirection(+1);
         }
@@ -93,7 +107,7 @@ public class Ball implements Runnable {
         try {
             while(true) {
                 move();
-                Thread.sleep(8);
+                Thread.sleep(5);
             }
         }
         catch(Exception e) {
