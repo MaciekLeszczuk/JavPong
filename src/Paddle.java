@@ -8,7 +8,7 @@ public class Paddle implements Runnable{ //Runnable allows us to execute this cl
 
     private int x, y, yDirection, id, score;  //Creating variables needed to operate
 
-    Rectangle paddle;  //Creating ractangle for paddle
+    Rectangle paddle;  //Creating rectangle for paddle
     Rectangle scoreboard; //Creating rectangle for scoreboard
 
     public Paddle(int x, int y, int id){  //This constructor has three inputs - X and Y are initial positions of the objects, while ID tells us if that's the paddles (if yes, then which player) or scoreboard

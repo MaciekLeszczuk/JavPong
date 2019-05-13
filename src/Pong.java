@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class Pong extends JFrame { //Thanks to using JFrame framework I can display graphic objects, and create windows
 
-    //screen size //Here I'm setting size of the window, in which game is displayed
+    //Screen size //Here I'm setting size of the window, in which game is displayed
     private int gWidth = 500;
     private int gHeight = 400;
     //Graphics creation //And here I'm creating that window
@@ -22,8 +22,7 @@ public class Pong extends JFrame { //Thanks to using JFrame framework I can disp
     private static Thread p2 = new Thread(b.p2);
     private static Thread scoreboard = new Thread(b.scoreboard);
 
-
-    //constructor for window
+    //Constructor for window
     public Pong() {
         this.setTitle("Pong!");  //Title of the window
         this.setSize(screenSize); //Size of the window
@@ -31,7 +30,7 @@ public class Pong extends JFrame { //Thanks to using JFrame framework I can disp
         this.setVisible(true); //And setting the windows visible
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Here I can set behaviour of my program after I close the window with it. Of course here the best option is that it will exit, when I close it
         this.addKeyListener(new KeyAdapter() {  //Adding KeyListeners to be able to read input from the keyboard, and then passing it to the program itself.
-                                                // KeyAdapter works in threads by their own, so even if I don't create thread for every signle object, everything should work just fine (as far as steering goes)
+                                                // KeyAdapter works in threads by their own, so even if I don't create thread for every single object, everything should work just fine (as far as steering goes)
             //Listener for keys being pressed down
             public void keyPressed(KeyEvent e) {
                 int code = e.getKeyCode();  //getKeyCode() gets the code, that tells us which key was pressed
